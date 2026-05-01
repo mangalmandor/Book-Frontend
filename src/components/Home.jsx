@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+// import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../context/authContext';
 import Cookies from "js-cookie";
@@ -27,7 +27,7 @@ const featuredBooks = [
 
 const Home = () => {
 
-  const { user, logout, login } = useContext(AuthContext);
+  // const { user, logout, login } = useContext(AuthContext);
   const token = Cookies.get("token");
   console.log(token);
   return (

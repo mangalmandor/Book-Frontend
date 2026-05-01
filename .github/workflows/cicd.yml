@@ -28,9 +28,10 @@ jobs:
 
     # Purana 'run: npm ci' hata kar ye niche wala block daalein
     - name: Install Dependencies
-      run: |
-        npm cache clean --force
-        npm install
+      run: npm install --legacy-peer-deps
+
+    - name: Syntax & Case Check (Lint)
+      run: npm run lint  # Ye command package.json mein pehle se hai
 
     - name: Build Project
       run: npm run build

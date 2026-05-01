@@ -6,7 +6,7 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(() => {
         const savedUser = Cookies.get("userInfo");
-        const tok = Cookies.get("token");
+        // const tok = Cookies.get("token");
         console.log(savedUser);
         try {
             return savedUser ? JSON.parse(savedUser) : null;
