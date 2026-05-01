@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 import { Mail, Lock, LogIn, ShieldCheck, Cpu, Loader2, ArrowRight } from 'lucide-react';
 
 // --- FIREBASE IMPORTS ---
-import { auth, googleProvider } from '../firebaseAuth/firebaseConfig.js'
+import { auth, googleProvider } from '../firebaseauth/firebaseconfig.js'
 import { signInWithPopup } from 'firebase/auth';
 
 const Login = () => {
