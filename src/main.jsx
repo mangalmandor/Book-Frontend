@@ -5,7 +5,7 @@ import './index.css';
 import App from './App.jsx';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-import { CartProvider } from './context/CartContext'; 
+import { CartProvider } from './context/cartContext.jsx';
 
 // --- AXIOS CONFIG START (Hamesha render se bahar rakhein) ---
 axios.defaults.withCredentials = true;
@@ -15,7 +15,7 @@ axios.interceptors.response.use(
   (error) => {
     // Agar Backend 401 bhej raha hai (Cookie expire ho gayi ya delete ho gayi)
     if (error.response && error.response.status === 401) {
-      
+
       // Safety: Agar pehle se login page par hain toh dubara popup na aaye
       if (window.location.pathname === '/login') {
         return Promise.reject(error);
@@ -27,12 +27,12 @@ axios.interceptors.response.use(
         text: 'Aapka session khatam ho gaya hai. Dobara login karein.',
         background: '#111827',
         color: '#fff',
-        confirmButtonColor: '#3b82f6',  
+        confirmButtonColor: '#3b82f6',
         allowOutsideClick: false,
       }).then((result) => {
         if (result.isConfirmed) {
-          localStorage.clear(); 
-          window.location.href = '/login'; 
+          localStorage.clear();
+          window.location.href = '/login';
         }
       });
     }
@@ -44,7 +44,7 @@ axios.interceptors.response.use(
 createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <AuthProvider>
-      <CartProvider> 
+      <CartProvider>
         <App />
       </CartProvider>
     </AuthProvider>
