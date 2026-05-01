@@ -19,11 +19,18 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+    
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm run build
+
+    # Purana 'run: npm ci' hata kar ye niche wala block daalein
+    - name: Install Dependencies
+      run: |
+        npm cache clean --force
+        npm install
+
+    - name: Build Project
+      run: npm run build
